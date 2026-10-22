@@ -3,6 +3,8 @@
 这是 `aw-mcu` Arduino + 共享 Rust 核心的仿真资产，不是实物刷机包。
 固件使用合成 PCM、易失 RAM，不连接后台，不含账号凭据。
 
+[直接打开 Wokwi 演示](https://wokwi.com/experimental/viewer?diagram=https%3A%2F%2Fraw.githubusercontent.com%2FDarkhorse-Fraternity%2Faw-mcu-wokwi-demo%2F100102dd644bba9b00d7c7fcad7f848d8db29bb2%2Fdiagram.json&firmware=https%3A%2F%2Fraw.githubusercontent.com%2FDarkhorse-Fraternity%2Faw-mcu-wokwi-demo%2F100102dd644bba9b00d7c7fcad7f848d8db29bb2%2Ffirmware.bin)
+
 使用 Wokwi 官方 Viewer 加载本仓库的 `diagram.json` 与 `firmware.bin`，
 即可在浏览器操作，不需要安装工具链或上传本地文件。
 
