@@ -5,12 +5,12 @@
   "parts": [
     {"type":"board-esp32-s3-devkitc-1","id":"esp","top":70,"left":0,"attrs":{}},
     {"type":"board-ssd1306","id":"screen","top":0,"left":170,"attrs":{"i2cAddress":"0x3c"}},
-    {"type":"wokwi-pushbutton","id":"left","top":110,"left":160,"attrs":{"color":"blue","label":"L: command / submit","key":"L"}},
-    {"type":"wokwi-pushbutton","id":"right","top":200,"left":160,"attrs":{"color":"green","label":"R: activity / hold to end","key":"R"}},
-    {"type":"wokwi-led","id":"record","top":110,"left":310,"attrs":{"color":"red","label":"MOCK REC"}},
+    {"type":"wokwi-pushbutton","id":"left","top":110,"left":160,"attrs":{"color":"blue","label":"左耳：说话 / 提交","key":"L"}},
+    {"type":"wokwi-pushbutton","id":"right","top":200,"left":160,"attrs":{"color":"green","label":"右耳：开始 / 暂停；长按结束","key":"R"}},
+    {"type":"wokwi-led","id":"record","top":110,"left":310,"attrs":{"color":"red","label":"录音"}},
     {"type":"wokwi-resistor","id":"resistor","top":165,"left":300,"attrs":{"value":"330"}},
     {"type":"wokwi-buzzer","id":"buzzer","top":240,"left":300,"attrs":{"volume":"0.1"}},
-    {"type":"wokwi-text","id":"note","top":-120,"left":0,"attrs":{"text":"Arduino + shared Rust core\nSerial: down 30 / up / remind 10 / journal / test\nL: command. R: activity. Hold R: end.\nSynthetic PCM / volatile RAM / no cloud"}}
+    {"type":"wokwi-text","id":"note","top":-120,"left":0,"attrs":{"text":"小熊双耳闹钟\n串口：journal 看表情 / down 30 计时 / remind 3 提醒\n左耳说话；右耳开始 / 暂停；长按右耳结束\n15 秒无操作熄屏；录音灯独立显示"}}
   ],
   "connections": [
     ["esp:TX","$serialMonitor:RX","",[]],
