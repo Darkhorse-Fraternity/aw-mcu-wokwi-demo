@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "author": "aw-mcu",
+  "editor": "wokwi",
+  "parts": [
+    {"type":"board-esp32-s3-devkitc-1","id":"esp","top":70,"left":0,"attrs":{}},
+    {"type":"board-ssd1306","id":"screen","top":0,"left":170,"attrs":{"i2cAddress":"0x3c"}},
+    {"type":"wokwi-pushbutton","id":"left","top":110,"left":160,"attrs":{"color":"blue","label":"L: command / submit","key":"L"}},
+    {"type":"wokwi-pushbutton","id":"right","top":200,"left":160,"attrs":{"color":"green","label":"R: activity / hold to end","key":"R"}},
+    {"type":"wokwi-led","id":"record","top":110,"left":310,"attrs":{"color":"red","label":"MOCK REC"}},
+    {"type":"wokwi-resistor","id":"resistor","top":165,"left":300,"attrs":{"value":"330"}},
+    {"type":"wokwi-buzzer","id":"buzzer","top":240,"left":300,"attrs":{"volume":"0.1"}},
+    {"type":"wokwi-text","id":"note","top":-120,"left":0,"attrs":{"text":"Arduino + shared Rust core\nSerial: down 30 / up / remind 10 / journal / test\nL: command. R: activity. Hold R: end.\nSynthetic PCM / volatile RAM / no cloud"}}
+  ],
+  "connections": [
+    ["esp:TX","$serialMonitor:RX","",[]],
+    ["esp:RX","$serialMonitor:TX","",[]],
+    ["screen:VCC","esp:3V3.1","red",[]],
+    ["screen:GND","esp:GND.1","black",[]],
+    ["screen:SDA","esp:8","green",[]],
+    ["screen:SCL","esp:9","blue",[]],
+    ["left:1.l","esp:4","blue",[]],
+    ["left:2.l","esp:GND.1","black",[]],
+    ["right:1.l","esp:5","green",[]],
+    ["right:2.l","esp:GND.1","black",[]],
+    ["record:A","esp:13","red",[]],
+    ["record:C","resistor:1","black",[]],
+    ["resistor:2","esp:GND.1","black",[]],
+    ["buzzer:1","esp:GND.1","black",[]],
+    ["buzzer:2","esp:14","orange",[]]
+  ],
+  "serialMonitor": {"display":"always","newline":"lf"},
+  "dependencies": {}
+}
