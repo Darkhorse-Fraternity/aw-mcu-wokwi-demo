@@ -3,7 +3,7 @@
   "author": "aw-mcu",
   "editor": "wokwi",
   "parts": [
-    {"type":"board-esp32-s3-devkitc-1","id":"esp","top":95,"left":-240,"attrs":{}},
+    {"type":"board-esp32-s3-devkitc-1","id":"esp","top":95,"left":-240,"attrs":{"cpuFrequency":"40"}},
     {"type":"wokwi-ili9341","id":"screen","top":105,"left":100,"rotate":90,"attrs":{}},
     {"type":"wokwi-pushbutton","id":"left","top":0,"left":40,"attrs":{"color":"#df8f7d","label":"左耳 · 说话 / 提交","key":"L"}},
     {"type":"wokwi-pushbutton","id":"right","top":0,"left":340,"attrs":{"color":"#a0bdb0","label":"右耳 · 开始 / 暂停 · 长按结束","key":"R"}},
