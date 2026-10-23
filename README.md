@@ -1,6 +1,6 @@
 # 小熊双耳闹钟 · 两键与对话效果演示
 
-[直接打开 Wokwi 演示](https://wokwi.com/experimental/viewer?diagram=https%3A%2F%2Fraw.githubusercontent.com%2FDarkhorse-Fraternity%2Faw-mcu-wokwi-demo%2F852c8bb38d3414a8d9d7d1e7dad37928fd69c2c9%2Fdiagram.json&firmware=https%3A%2F%2Fraw.githubusercontent.com%2FDarkhorse-Fraternity%2Faw-mcu-wokwi-demo%2F852c8bb38d3414a8d9d7d1e7dad37928fd69c2c9%2Ffirmware.bin)
+[直接打开 Wokwi 演示](https://wokwi.com/experimental/viewer?diagram=https%3A%2F%2Fraw.githubusercontent.com%2FDarkhorse-Fraternity%2Faw-mcu-wokwi-demo%2Faf9ac15a135d72cc51aa317008c173645e18eb70%2Fdiagram.json&firmware=https%3A%2F%2Fraw.githubusercontent.com%2FDarkhorse-Fraternity%2Faw-mcu-wokwi-demo%2Faf9ac15a135d72cc51aa317008c173645e18eb70%2Ffirmware.bin)
 
 本版使用 Wokwi 原生 ESP32-S3 与横向 320×240 ILI9341 TFT：
 表情与眨眼、20 px 中文、72 px 计时数字、提醒铃铛，新增圆形火柴人动画区。
@@ -37,6 +37,8 @@
 - `reply query`：左耳提交后注入模拟查询结果。
 - `reply wave` / `reply walk` / `reply jump`：提交对话后注入模拟动画结果。
 - `reset`：清空本次仿真数据。
+- `storage`：回读已封存音频的字节数、修订及 SHA-256；音频为合成数据。
+- `restart`：真正复位模拟 CPU，恢复同一模拟实例中已提交的 Flash 记录。
 - `test`：执行 25 项核心交互断言，通过输出 `AW_TEST_PASS`。
 
 这是 Arduino + 共享 Rust 核心的无凭据仿真镜像，不连接后台。
@@ -48,11 +50,14 @@ Wokwi 不模拟背光和 RST，DISPOFF 后画布仍保留，固件先清黑再�
 
 本版浏览器验证同时检查两键交互、有效对话回复后的动画像素、过期/取消/重放隔离和电源状态注入。
 `reply walk/wave/jump` 是模拟器测试语法；真实云端动作字段与协议尚未接入此演示。
-每次采音只注入一帧合成 PCM，存储为易失 RAM；
+现在使用持续合成 PCM，直接复用真机工作线的 Rust 采样分帧与租约校验，记录保存在模拟 Flash。
+暂停后可输入 `storage`，再输入 `restart`，重新用 `storage` 比对封存音频；右耳还可继续追加。
+指令音频单独存放和清理，不进入日记。CPU 复位保留数据，停止/重载仿真不承诺保留。
+`reset` 会删除当前演示文件；未封存尾部、每秒恢复块、满载恢复界面仍待补齐。
 不代表真实录放音、WakeNet 接入、周期提醒日历、掉电可靠性或一周续航已经验收。
 原工程及账号配置不在此仓库。本镜像仅供仿真，不刷入实体 S3。
 
-固件 SHA-256：`d193d33eb2130effe1c7c689e59d1b512bff4a187087d605ffc26854db8f2924`。
+固件 SHA-256：`5917f53cdaa7191fc147702522ddea9f36f4ade54de7d32377945880203f32c8`。
 工具链：ESP-IDF 5.5.4、Arduino-ESP32 3.3.12、Rust Xtensa 1.94.0.2。
 
 字体使用 Noto Sans SC 固定字形子集，原字体来自
