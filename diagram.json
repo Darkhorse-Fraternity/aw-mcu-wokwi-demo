@@ -10,12 +10,17 @@
     {"type":"wokwi-led","id":"record","top":305,"left":465,"attrs":{"color":"red","label":"录音"}},
     {"type":"wokwi-resistor","id":"resistor","top":355,"left":460,"attrs":{"value":"330"}},
     {"type":"wokwi-buzzer","id":"buzzer","top":325,"left":565,"attrs":{"volume":"0.1"}},
+    {"type":"wokwi-ds1307","id":"rtc","top":355,"left":-15,"attrs":{"initTime":"2026-10-23T08:00:00Z"}},
     {"type":"wokwi-text","id":"note","top":-100,"left":15,"attrs":{"text":"小熊双耳闹钟 · 仅左右两个按键\n左耳发起 → 再按提交 → 串口 reply wave 模拟对话回复\n串口 down 30 / remind 3；15 秒熄屏，采音灯独立"}},
     {"type":"wokwi-text","id":"battery-plan","top":-60,"left":-560,"attrs":{"text":"电池供电设计 · 接线示意\n\n🔋 单节锂电池（带保护）\n    3.7V / 2500mAh\n          │ BATT\n          ▼\nBQ24074 充电 / 电源切换\n          │ LOAD（≤4.4V）\n          ▼\n     3.3V 升降压\n          │\n          └─→ S3 / 单麦 / 屏幕\n\nUSB-C 5V → BQ24074 输入\n\n当前仍由模拟器供电。\n以上未参与电路仿真；\n电池接入与充放电尚未完成。","color":"#37474f"}}
   ],
   "connections": [
     ["esp:TX","$serialMonitor:RX","",[]],
     ["esp:RX","$serialMonitor:TX","",[]],
+    ["rtc:5V","esp:5V","",[]],
+    ["rtc:GND","esp:GND.1","",[]],
+    ["rtc:SDA","esp:8","",[]],
+    ["rtc:SCL","esp:9","",[]],
     ["screen:VCC","esp:3V3.1","",[]],
     ["screen:GND","esp:GND.1","",[]],
     ["screen:CS","esp:10","",[]],
