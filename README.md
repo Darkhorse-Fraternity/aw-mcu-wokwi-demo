@@ -1,4 +1,4 @@
-# 小熊双耳闹钟 · 圆形动画与电池交互研究台
+# 小熊双耳闹钟 · 两键与对话效果演示
 
 [直接打开 Wokwi 演示](https://wokwi.com/experimental/viewer?diagram=https%3A%2F%2Fraw.githubusercontent.com%2FDarkhorse-Fraternity%2Faw-mcu-wokwi-demo%2Feb4a18746753d4f7f58185f123bd4f9c6dcc8fb2%2Fdiagram.json&firmware=https%3A%2F%2Fraw.githubusercontent.com%2FDarkhorse-Fraternity%2Faw-mcu-wokwi-demo%2Feb4a18746753d4f7f58185f123bd4f9c6dcc8fb2%2Ffirmware.bin)
 
@@ -6,13 +6,14 @@
 表情与眨眼、20 px 中文、72 px 计时数字、提醒铃铛，新增圆形火柴人动画区。
 这是矩形屏内的圆形内容预览，未虚构 Wokwi 不支持的圆屏控制器。
 
-屏幕左侧实验按键：走路 / 挥手 / 跳跃 / 暂停继续，也可用键盘 1 / 2 / 3 / 4。
-每段动作约 3 秒，完成后停住；按同一动作重播，暂停键在完成后也可重播。
+器件图仅保留左右耳两个按键，取消额外动作键、测试旋钮和测试开关。
+动画演示：左耳短按发起对话 → 再按左耳提交 → 串口输入 `reply wave` 回车。
+也可输入 `reply walk` 或 `reply jump`；每段约 3 秒，完成后停住。
+每次需要新的有效对话请求；取消、超时或重复注入的回复不启动动作。
 双耳操作返回业务界面，提醒和指令优先显示；动画帧不延长 15 秒亮屏时间。
-这些额外按键用于研究，产品双耳行为保持原样。
 
-右边旋钮模拟电池 3.0–4.2V；先点击旋钮，再用 Home/End 到最低/最高。
-拨动开关模拟 USB 接入，左为电池、右为 USB；电压和 BAT/USB 在屏幕显示。
+串口 `power battery 3200` 注入 3.20V，范围 3000–4200mV；
+`power usb 1` / `power usb 0` 注入 USB 接入/拔出。电压和 BAT/USB 在屏幕显示。
 无 USB 且低于 3.4V 时提示低电并停止动作，业务记录和计时继续。
 这是状态注入，不模拟电池化学、充电电流、真实插拔供电和续航；不显示伪造的电量百分比。
 
@@ -29,22 +30,24 @@
 - `advance 300000`：加速 5 分钟，检查贪睡后再次响铃。
 - `journal`：选择日记，再按右耳看表情与模拟记录。
 - `reply query`：左耳提交后注入模拟查询结果。
+- `reply wave` / `reply walk` / `reply jump`：提交对话后注入模拟动画结果。
 - `reset`：清空本次仿真数据。
 - `test`：执行 25 项核心交互断言，通过输出 `AW_TEST_PASS`。
 
 这是 Arduino + 共享 Rust 核心的无凭据仿真镜像，不连接后台。
 GPIO 4/5 是双耳，13 为采音灯，14 为蜂鸣器；
 TFT CS/MOSI/SCK/D-C/RST 分别为 10/11/12/16/17。
-动作键为 6/7/8/9，电压旋钮为 ADC 1，USB 标记为 GPIO 2。这些不是实体板接线承诺。
+电路图未接入额外动作键或电源测试控件。这些不是实体板接线承诺。
 Wokwi 不模拟背光和 RST，DISPOFF 后画布仍保留，固件先清黑再发关闭命令；
 黑屏不能证明真实面板或背光已断电。
 
-本版浏览器验证同时检查原有双耳交互、实际动画像素变化、暂停稳定、ADC 和 USB 状态输入。
+本版浏览器验证同时检查两键交互、有效对话回复后的动画像素、过期/取消/重放隔离和电源状态注入。
+`reply walk/wave/jump` 是模拟器测试语法；真实云端动作字段与协议尚未接入此演示。
 每次采音只注入一帧合成 PCM，存储为易失 RAM；
 不代表真实录放音、WakeNet 接入、周期提醒日历、掉电可靠性或一周续航已经验收。
 原工程及账号配置不在此仓库。本镜像仅供仿真，不刷入实体 S3。
 
-固件 SHA-256：`3a7a91ae1ae921aced7b1eddf53a44a21629e52995332df52727188b0e0a8284`。
+固件 SHA-256：`d193d33eb2130effe1c7c689e59d1b512bff4a187087d605ffc26854db8f2924`。
 工具链：ESP-IDF 5.5.4、Arduino-ESP32 3.3.12、Rust Xtensa 1.94.0.2。
 
 字体使用 Noto Sans SC 固定字形子集，原字体来自

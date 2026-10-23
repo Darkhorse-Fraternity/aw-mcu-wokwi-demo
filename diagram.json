@@ -10,15 +10,7 @@
     {"type":"wokwi-led","id":"record","top":305,"left":465,"attrs":{"color":"red","label":"录音"}},
     {"type":"wokwi-resistor","id":"resistor","top":355,"left":460,"attrs":{"value":"330"}},
     {"type":"wokwi-buzzer","id":"buzzer","top":325,"left":565,"attrs":{"volume":"0.1"}},
-    {"type":"wokwi-pushbutton","id":"walk","top":95,"left":-80,"attrs":{"color":"#b9c7b5","label":"走路","key":"1"}},
-    {"type":"wokwi-pushbutton","id":"wave","top":165,"left":-80,"attrs":{"color":"#b9c7b5","label":"挥手","key":"2"}},
-    {"type":"wokwi-pushbutton","id":"jump","top":235,"left":-80,"attrs":{"color":"#b9c7b5","label":"跳跃","key":"3"}},
-    {"type":"wokwi-pushbutton","id":"pause","top":305,"left":-80,"attrs":{"color":"#d1b7a3","label":"暂停 / 继续","key":"4"}},
-    {"type":"wokwi-potentiometer","id":"battery","top":105,"left":515,"attrs":{"value":"682"}},
-    {"type":"wokwi-slide-switch","id":"usb","top":260,"left":520,"attrs":{"value":"","bounce":"0"}},
-    {"type":"wokwi-text","id":"power-note","top":50,"left":485,"attrs":{"text":"电池电压（模拟）\n旋钮：3.0–4.2V"}},
-    {"type":"wokwi-text","id":"usb-note","top":220,"left":480,"attrs":{"text":"USB 接入状态（模拟）"}},
-    {"type":"wokwi-text","id":"note","top":-100,"left":15,"attrs":{"text":"小熊交互研究台 · 现成 TFT 内的圆形动画区\n屏幕左侧按键试动画；上方双耳控制说话 / 当前活动\n串口 down 30 / remind 3；15 秒熄屏，采音灯独立"}}
+    {"type":"wokwi-text","id":"note","top":-100,"left":15,"attrs":{"text":"小熊双耳闹钟 · 仅左右两个按键\n左耳发起 → 再按提交 → 串口 reply wave 模拟对话回复\n串口 down 30 / remind 3；15 秒熄屏，采音灯独立"}}
   ],
   "connections": [
     ["esp:TX","$serialMonitor:RX","",[]],
@@ -38,21 +30,7 @@
     ["record:C","resistor:1","black",[]],
     ["resistor:2","esp:GND.1","black",[]],
     ["buzzer:1","esp:GND.1","black",[]],
-    ["buzzer:2","esp:14","orange",[]],
-    ["walk:1.l","esp:6","",[]],
-    ["walk:2.l","esp:GND.1","",[]],
-    ["wave:1.l","esp:7","",[]],
-    ["wave:2.l","esp:GND.1","",[]],
-    ["jump:1.l","esp:8","",[]],
-    ["jump:2.l","esp:GND.1","",[]],
-    ["pause:1.l","esp:9","",[]],
-    ["pause:2.l","esp:GND.1","",[]],
-    ["battery:VCC","esp:3V3.1","",[]],
-    ["battery:GND","esp:GND.1","",[]],
-    ["battery:SIG","esp:1","",[]],
-    ["usb:1","esp:GND.1","",[]],
-    ["usb:2","esp:2","",[]],
-    ["usb:3","esp:3V3.1","",[]]
+    ["buzzer:2","esp:14","orange",[]]
   ],
   "serialMonitor": {"display":"always","newline":"lf"},
   "dependencies": {}
