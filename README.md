@@ -1,6 +1,6 @@
 # 小熊双耳闹钟 · 大屏验证版
 
-[直接打开 Wokwi 演示](https://wokwi.com/experimental/viewer?diagram=https%3A%2F%2Fraw.githubusercontent.com%2FDarkhorse-Fraternity%2Faw-mcu-wokwi-demo%2Fmain%2Fdiagram.json&firmware=https%3A%2F%2Fraw.githubusercontent.com%2FDarkhorse-Fraternity%2Faw-mcu-wokwi-demo%2Fmain%2Ffirmware.bin)
+[直接打开 Wokwi 演示](https://wokwi.com/experimental/viewer?diagram=https%3A%2F%2Fraw.githubusercontent.com%2FDarkhorse-Fraternity%2Faw-mcu-wokwi-demo%2F6ceea5ba9771adb71204b6aac3e6ac3035fa5391%2Fdiagram.json&firmware=https%3A%2F%2Fraw.githubusercontent.com%2FDarkhorse-Fraternity%2Faw-mcu-wokwi-demo%2F6ceea5ba9771adb71204b6aac3e6ac3035fa5391%2Ffirmware.bin)
 
 本版把原 128×64 OLED 占位升级为横向 320×240 ILI9341 TFT：
 平滑表情与眨眼、20 px 中文、72 px 计时数字、提醒铃铛和清晰的双耳提示。
