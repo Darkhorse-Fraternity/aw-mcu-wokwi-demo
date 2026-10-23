@@ -1,6 +1,6 @@
 # 小熊双耳闹钟 · 圆形动画与电池交互研究台
 
-[直接打开 Wokwi 演示](https://wokwi.com/experimental/viewer?diagram=https%3A%2F%2Fraw.githubusercontent.com%2FDarkhorse-Fraternity%2Faw-mcu-wokwi-demo%2Ff27a5b01f17a3bbfc46bcd211b915bece02a58cb%2Fdiagram.json&firmware=https%3A%2F%2Fraw.githubusercontent.com%2FDarkhorse-Fraternity%2Faw-mcu-wokwi-demo%2Ff27a5b01f17a3bbfc46bcd211b915bece02a58cb%2Ffirmware.bin)
+[直接打开 Wokwi 演示](https://wokwi.com/experimental/viewer?diagram=https%3A%2F%2Fraw.githubusercontent.com%2FDarkhorse-Fraternity%2Faw-mcu-wokwi-demo%2Feb4a18746753d4f7f58185f123bd4f9c6dcc8fb2%2Fdiagram.json&firmware=https%3A%2F%2Fraw.githubusercontent.com%2FDarkhorse-Fraternity%2Faw-mcu-wokwi-demo%2Feb4a18746753d4f7f58185f123bd4f9c6dcc8fb2%2Ffirmware.bin)
 
 本版使用 Wokwi 原生 ESP32-S3 与横向 320×240 ILI9341 TFT：
 表情与眨眼、20 px 中文、72 px 计时数字、提醒铃铛，新增圆形火柴人动画区。
